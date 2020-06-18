@@ -32,13 +32,17 @@ e = environment()
 e.append('PATH', meson.current_build_dir() + '/../cmd', separator: ':')
 e.set('VECTORS', meson.current_source_dir() + '/vectors')
 
+openmp = dependency('OpenMP')
+
 foreach p: progs
-  exe = executable(p, p + '.c', dependencies: jansson, link_with: libjose)
   if p == 'api_b64'
+    dep = [jansson, openmp]
     to = 1800
   else
+    dep = jansson
     to = 30
   endif
+  exe = executable(p, sources: [p + '.c'], dependencies: dep, link_with: libjose)
   test(p, exe, timeout: to)
 endforeach
 

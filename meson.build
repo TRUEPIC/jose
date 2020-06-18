@@ -1,33 +1,10 @@
-project('jose', 'c', license: 'APL2', version: '10')
-
-add_project_arguments(
-  '-I' + meson.current_source_dir(),
-  '-I' + meson.current_build_dir(),
-  '-std=gnu99',
-  '-Wall',
-  '-Wextra',
-  '-Werror',
-  '-Wstrict-aliasing',
-  '-Wchar-subscripts',
-  '-Wformat-security',
-  '-Wmissing-declarations',
-  '-Wmissing-prototypes',
-  '-Wnested-externs',
-  '-Wpointer-arith',
-  '-Wshadow',
-  '-Wsign-compare',
-  '-Wstrict-prototypes',
-  '-Wtype-limits',
-  '-Wunused-function',
-  '-Wno-missing-field-initializers',
-  '-Wno-unused-command-line-argument',
-  '-Wno-unused-parameter',
-  '-Wno-unknown-pragmas',
-  language: 'c'
-)
+project('jose', 'c', license: 'APL2', version: '10',
+  default_options: [
+    'c_std=gnu99',
+    ])
 
 zlib = dependency('zlib')
-threads = dependency('threads')
+#threads = dependency('threads')
 jansson = dependency('jansson', version: '>=2.10')
 libcrypto = dependency('libcrypto', version: '>=1.0.2')
 
