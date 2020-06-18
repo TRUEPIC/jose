@@ -6,8 +6,10 @@ configure_file(
   configuration: cd
 )
 
+libjose_inc = include_directories('.')
+
 install_headers(
-  meson.current_build_dir() + '/jose.h',
+  '../cmd/jose.h',
   'cfg.h',
   'io.h',
   'b64.h',
