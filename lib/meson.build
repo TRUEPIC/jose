@@ -40,7 +40,7 @@ libjose = library('jose',
   'openssl/rsaes.c',
   'openssl/rsassa.c',
   ],
-
+  include_directories: libjose_inc,
   dependencies: [zlib, jansson, libcrypto],
   version: '0.0.0',
   link_args: flags,

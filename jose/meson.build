@@ -6,7 +6,7 @@ configure_file(
   configuration: cd
 )
 
-libjose_inc = include_directories('.')
+libjose_inc = include_directories('..')
 
 install_headers(
   '../cmd/jose.h',

@@ -42,7 +42,10 @@ foreach p: progs
     dep = jansson
     to = 30
   endif
-  exe = executable(p, sources: [p + '.c'], dependencies: dep, link_with: libjose)
+  exe = executable(p, sources: [p + '.c'],
+    include_directories:libjose_inc,
+    dependencies: dep,
+    link_with: libjose)
   test(p, exe, timeout: to)
 endforeach
 
