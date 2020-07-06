@@ -4,9 +4,13 @@ project('jose', 'c', license: 'APL2', version: '10',
     ])
 
 zlib = dependency('zlib')
-#threads = dependency('threads')
 jansson = dependency('jansson', version: '>=2.10')
-libcrypto = dependency('libcrypto', version: '>=1.0.2')
+
+cmake = import('cmake')
+openssl_proj = cmake.subproject('openssl',
+  cmake_options: '-DCMAKE_POSITION_INDEPENDENT_CODE=on')
+#libcrypto = dependency('libcrypto', version: '>=1.0.2')
+libcrypto = openssl_proj.dependency('crypto')
 
 subdir('jose')
 subdir('doc')
